@@ -1,14 +1,20 @@
 package exceptions;
-
+import static exceptions.Solution.MyExceptions.checkIntMensheZiro;
 public class Solution {
-    public static void   checkIntMensheZiro(int value) throws IllegalArgumentException {
-        if (value < 0) {
-            throw new IllegalArgumentException("The value should be more than zero");
-        }else {
-            System.out.println(value);
+    public static class MyExceptions extends IllegalArgumentException {
+        public MyExceptions() {
+            super("The value should be more than zero");
+
+        }
+
+        public static void checkIntMensheZiro(int value) throws MyExceptions  {
+            if (value < 0) {
+                throw new MyExceptions();
+            } else {
+                System.out.println(value);
+            }
         }
     }
-
     public static void main(String[] args) {
         checkIntMensheZiro(256);
         try {
